@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TeleopScouting">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/neitherRadioButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/neitherRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Neither" />
+
+        <RadioButton
+            android:id="@+id/unengagedRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Docked" />
+
+        <RadioButton
+            android:id="@+id/engagedRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Engaged" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/teleopConePickup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cone Pickup"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/teleopCubePickup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65999997" />
+
+    <Button
+        android:id="@+id/teleopHighScored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/teleopMidScored"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.824" />
+
+    <Button
+        android:id="@+id/teleopCubePickup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cube Pickup"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teleopConePickup"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66999996" />
+
+    <Button
+        android:id="@+id/teleopHybridScored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hybrid"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/teleopMiss"
+        app:layout_constraintStart_toEndOf="@+id/teleopMidScored"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.817" />
+
+    <TextView
+        android:id="@+id/teleopConeCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cones Scored: 0"
+        app:layout_constraintBottom_toTopOf="@+id/teleopConePickup"
+        app:layout_constraintEnd_toStartOf="@+id/teleopCubeCounter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94" />
+
+    <TextView
+        android:id="@+id/teleopCubeCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cubes Scored: 0"
+        app:layout_constraintBottom_toTopOf="@+id/teleopCubePickup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teleopConeCounter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94" />
+
+    <Button
+        android:id="@+id/teleopOverButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teleop Over"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.32999998" />
+
+    <TextView
+        android:id="@+id/teleopText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teleop"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/teleopConePickup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/teleopMidScored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mid"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/teleopHybridScored"
+        app:layout_constraintStart_toEndOf="@+id/teleopHighScored"
+        app:layout_constraintTop_toBottomOf="@+id/teleopConePickup"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <Button
+        android:id="@+id/teleopMiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miss"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teleopHybridScored"
+        app:layout_constraintTop_toBottomOf="@+id/teleopCubePickup"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
