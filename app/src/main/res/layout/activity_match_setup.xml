@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#696969"
     tools:context=".MatchSetup">
 
     <EditText
@@ -35,6 +36,7 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#b8131c"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,12 +58,14 @@
             android:id="@+id/blueRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#000000"
             android:text="Blue Team" />
 
         <RadioButton
             android:id="@+id/redRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#000000"
             android:text="Red Team" />
     </RadioGroup>
 

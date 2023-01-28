@@ -51,8 +51,6 @@ public class QrCodeDisplay extends AppCompatActivity {
                             bitmap.setPixel(x1, y1, Color.rgb(0, 0, 0));
                         }
                     }
-                } else {
-                    bitmap.setPixel(x, y, Color.rgb(255, 255, 255));
                 }
 
             }

@@ -45,7 +45,7 @@ public class TeleopScouting extends AppCompatActivity {
                 {
                     coneScoredButton.setBackgroundColor(Color.rgb(100, 0, 0));
                 } else {
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
             }
@@ -60,7 +60,7 @@ public class TeleopScouting extends AppCompatActivity {
                 {
                     cubeScoredButton.setBackgroundColor(Color.rgb(100, 0, 0));
                 } else {
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
             }
         });
@@ -72,12 +72,12 @@ public class TeleopScouting extends AppCompatActivity {
                 {
                     teleopHighConesScored++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 } else if (holdingCube)
                 {
                     teleopHighCubesScored++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
                 TextView textView = (TextView) findViewById(R.id.teleopConeCounter);
@@ -95,12 +95,12 @@ public class TeleopScouting extends AppCompatActivity {
                 {
                     misses++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 } else if (holdingCube)
                 {
                     misses++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
             }
@@ -113,12 +113,12 @@ public class TeleopScouting extends AppCompatActivity {
                 {
                     teleopHybridConesScored++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 } else if (holdingCube)
                 {
                     teleopHybridCubesScored++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
                 TextView textView = (TextView) findViewById(R.id.teleopConeCounter);
@@ -135,12 +135,13 @@ public class TeleopScouting extends AppCompatActivity {
                 {
                     teleopMidConesScored++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
+                    
                 } else if (holdingCube)
                 {
                     teleopMidCubesScored++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
                 TextView textView = (TextView) findViewById(R.id.teleopConeCounter);
@@ -169,7 +170,7 @@ public class TeleopScouting extends AppCompatActivity {
                         docked = "Engaged";
                         break;
                 }
-                String value= teleopHighConesScored + "/" + teleopHighCubesScored + "/" + teleopMidConesScored + "/" + teleopMidCubesScored + "/" + teleopHybridConesScored + "/" + teleopHybridCubesScored + "/" + misses + "/" + docked + "/";
+                String value= teleopHighConesScored + "/" + teleopMidConesScored + "/" + teleopHybridConesScored + "/" + teleopHighCubesScored + "/" + teleopMidCubesScored + "/" + teleopHybridCubesScored + "/" + misses + "/" + docked + "/";
                 Intent i = new Intent(TeleopScouting.this, QrCodeDisplay.class);
                 i.putExtra("data",data + value);
                 startActivity(i);

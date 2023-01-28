@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#696969"
     tools:context=".TeleopScouting">
 
     <RadioGroup
@@ -13,25 +14,30 @@
         android:checkedButton="@id/neitherRadioButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85">
 
         <RadioButton
             android:id="@+id/neitherRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#000000"
             android:text="Neither" />
 
         <RadioButton
             android:id="@+id/unengagedRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#000000"
             android:text="Docked" />
 
         <RadioButton
             android:id="@+id/engagedRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#000000"
             android:text="Engaged" />
     </RadioGroup>
 
@@ -39,51 +45,60 @@
         android:id="@+id/teleopConePickup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cone Pickup"
+        android:backgroundTint="#b8131c"
+        android:text="\nCone\nPickup\n"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toStartOf="@+id/teleopCubePickup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65999997" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <Button
         android:id="@+id/teleopHighScored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="High"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        android:backgroundTint="#b8131c"
+        android:text="\nHigh\n"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/teleopMidScored"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824" />
+        app:layout_constraintVertical_bias="0.56" />
 
     <Button
         android:id="@+id/teleopCubePickup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cube Pickup"
+        android:backgroundTint="#b8131c"
+        android:text="\nCube\nPickup\n"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/teleopConePickup"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66999996" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <Button
         android:id="@+id/teleopHybridScored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hybrid"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        android:backgroundTint="#b8131c"
+        android:text="\nHybrid\n"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/teleopMiss"
         app:layout_constraintStart_toEndOf="@+id/teleopMidScored"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.817" />
+        app:layout_constraintVertical_bias="0.56" />
 
     <TextView
         android:id="@+id/teleopConeCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cones Scored: 0"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/teleopConePickup"
         app:layout_constraintEnd_toStartOf="@+id/teleopCubeCounter"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cubes Scored: 0"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/teleopCubePickup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/teleopConeCounter"
@@ -105,13 +121,16 @@
         android:id="@+id/teleopOverButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teleop Over"
-        android:textSize="20sp"
+        android:backgroundTint="#b8131c"
+        android:padding="20dp"
+        android:text="Teleop\nOver"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.32999998" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
 
     <TextView
         android:id="@+id/teleopText"
@@ -128,22 +147,26 @@
         android:id="@+id/teleopMidScored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mid"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        android:backgroundTint="#b8131c"
+        android:text="\nMid\n"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/teleopHybridScored"
         app:layout_constraintStart_toEndOf="@+id/teleopHighScored"
-        app:layout_constraintTop_toBottomOf="@+id/teleopConePickup"
-        app:layout_constraintVertical_bias="0.01999998" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
 
     <Button
         android:id="@+id/teleopMiss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Miss"
+        android:backgroundTint="#b8131c"
+        android:text="\nMiss\n"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/teleopHybridScored"
-        app:layout_constraintTop_toBottomOf="@+id/teleopCubePickup"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

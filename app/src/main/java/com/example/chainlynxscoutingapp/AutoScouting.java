@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -45,7 +46,7 @@ public class AutoScouting extends AppCompatActivity {
                 {
                     coneScoredButton.setBackgroundColor(Color.rgb(100, 0, 0));
                 } else {
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
             }
@@ -60,7 +61,7 @@ public class AutoScouting extends AppCompatActivity {
                 {
                     cubeScoredButton.setBackgroundColor(Color.rgb(100, 0, 0));
                 } else {
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
             }
         });
@@ -72,12 +73,12 @@ public class AutoScouting extends AppCompatActivity {
                 {
                     autoHighConesScored++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 } else if (holdingCube)
                 {
                     autoHighCubesScored++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
                 TextView textView = (TextView) findViewById(R.id.autoConeCounter);
@@ -95,12 +96,12 @@ public class AutoScouting extends AppCompatActivity {
                 {
                     misses++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 } else if (holdingCube)
                 {
                     misses++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
             }
@@ -113,12 +114,12 @@ public class AutoScouting extends AppCompatActivity {
                 {
                     autoHybridConesScored++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 } else if (holdingCube)
                 {
                     autoHybridCubesScored++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
                 TextView textView = (TextView) findViewById(R.id.autoConeCounter);
@@ -135,12 +136,12 @@ public class AutoScouting extends AppCompatActivity {
                 {
                     autoMidConesScored++;
                     holdingCone = false;
-                    coneScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    coneScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 } else if (holdingCube)
                 {
                     autoMidCubesScored++;
                     holdingCube = false;
-                    cubeScoredButton.setBackgroundColor(Color.rgb(98, 0, 237));
+                    cubeScoredButton.setBackgroundColor(Color.rgb(184, 19, 28));
                 }
 
                 TextView textView = (TextView) findViewById(R.id.autoConeCounter);
@@ -169,7 +170,10 @@ public class AutoScouting extends AppCompatActivity {
                         docked = "Engaged";
                         break;
                 }
-                String value= autoHighConesScored + "/" + autoHighCubesScored + "/" + autoMidConesScored + "/" + autoMidCubesScored + "/" + autoHybridConesScored + "/" + autoHybridCubesScored + "/" + misses + "/" + docked + "/";
+
+                CheckBox mobilityCheck = findViewById(R.id.mobilityCheck);
+                boolean mobility = mobilityCheck.isChecked();
+                String value= autoHighConesScored + "/" + autoMidConesScored + "/" + autoHybridConesScored + "/" + autoHighCubesScored + "/" + autoMidCubesScored + "/" + autoHybridCubesScored + "/" + misses + "/" + mobility + "/" + docked + "/";
                 Intent i = new Intent(AutoScouting.this, TeleopScouting.class);
                 i.putExtra("data",data + value);
                 startActivity(i);
