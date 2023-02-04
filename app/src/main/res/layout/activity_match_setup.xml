@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#696969"
+    android:background="#aaaaaa"
     tools:context=".MatchSetup">
 
     <EditText
@@ -14,11 +14,10 @@
         android:ems="10"
         android:hint="Match Number"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/teamNumberInput"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35000002" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/teamNumberInput"
@@ -27,10 +26,12 @@
         android:ems="10"
         android:hint="Team Number"
         android:inputType="number"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchNumberInput" />
+        app:layout_constraintTop_toBottomOf="@+id/matchNumberInput"
+        tools:visibility="gone" />
 
     <Button
         android:id="@+id/nextButton"
@@ -49,10 +50,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/teamNumberInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchNumberInput">
+        app:layout_constraintTop_toBottomOf="@+id/matchNumberInput"
+        tools:visibility="gone">
 
         <RadioButton
             android:id="@+id/blueRadioButton"

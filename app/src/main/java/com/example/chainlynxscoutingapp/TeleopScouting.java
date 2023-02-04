@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 
 public class TeleopScouting extends AppCompatActivity {
 
-    private int teleopHighConesScored = 0;
+    public int teleopHighConesScored = 0;
     private int teleopHighCubesScored = 0;
     private int teleopMidConesScored = 0;
     private int teleopMidCubesScored = 0;
@@ -35,6 +36,8 @@ public class TeleopScouting extends AppCompatActivity {
             data = extras.getString("data");
             //The key argument here must match that used in the other activity
         }
+        TextView text = (TextView)findViewById(R.id.teamScouting2);
+        text.setText("YOU ARE SCOUTING " + data.split("/")[2] + " IN MATCH " + data.split("")[1]);
 
         Button coneScoredButton = findViewById(R.id.teleopConePickup);
         coneScoredButton.setOnClickListener(new View.OnClickListener() {

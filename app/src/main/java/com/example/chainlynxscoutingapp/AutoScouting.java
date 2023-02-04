@@ -36,6 +36,8 @@ public class AutoScouting extends AppCompatActivity {
             data = extras.getString("data");
             //The key argument here must match that used in the other activity
         }
+        TextView text = (TextView)findViewById(R.id.teamScouting);
+        text.setText("YOU ARE SCOUTING " + data.split("/")[2] + " IN MATCH " + data.split("")[1]);
 
         Button coneScoredButton = findViewById(R.id.autoConePickup);
         coneScoredButton.setOnClickListener(new View.OnClickListener() {
