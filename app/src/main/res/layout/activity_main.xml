@@ -14,12 +14,13 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#b8131c"
         android:text="Start Scouting!"
-        android:textSize="20sp"
+        android:textSize="24sp"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
+        app:layout_constraintVertical_bias="0.65999997" />
 
     <TextView
         android:id="@+id/textView"
@@ -46,5 +47,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.426"
         app:srcCompat="@drawable/chainlynx_logo" />
+
+    <Button
+        android:id="@+id/pitScoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#b8131c"
+        android:text="Pit Scout"
+        android:textSize="24sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.26" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

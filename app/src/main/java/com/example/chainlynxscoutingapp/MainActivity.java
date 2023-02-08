@@ -45,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(switchActivityIntent);
             }
         });
+
+        Button pitScoutButton = findViewById(R.id.pitScoutButton);
+        pitScoutButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent switchActivityIntent = new Intent(view.getContext(), pitScoutActivity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
     }
 
 

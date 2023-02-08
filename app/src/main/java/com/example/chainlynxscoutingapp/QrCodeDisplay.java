@@ -2,14 +2,25 @@ package com.example.chainlynxscoutingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.chainlynxscoutingapp.qrcodegen.QrCode;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.logging.Logger;
 
 public class QrCodeDisplay extends AppCompatActivity {
 
@@ -41,7 +52,6 @@ public class QrCodeDisplay extends AppCompatActivity {
         {
             for (int y = 0; y < qr.getHeight() * scale; y+= scale)
             {
-                Log.d("Qr Debug", qr.getModule(x, y) + "");
                 if (qr.getModule(x/scale, y/scale))
                 {
                     for (int x1 = x; x1 < x + scale; x1++)
@@ -52,12 +62,31 @@ public class QrCodeDisplay extends AppCompatActivity {
                         }
                     }
                 }
-
             }
         }
 
 
         ImageView image = findViewById(R.id.imageView);
         image.setImageBitmap(bitmap);
+
+        generateNoteOnSD(getApplicationContext(), "data.txt", data);
+    }
+
+
+    public void generateNoteOnSD(Context context, String sFileName, String sBody) {
+        try {
+            File root = new File(Environment.getExternalStorageDirectory(), "Notes");
+            if (!root.exists()) {
+                root.mkdirs();
+            }
+            File gpxfile = new File(root, sFileName);
+            FileWriter writer = new FileWriter(gpxfile, true);
+            writer.append(sBody);
+            writer.flush();
+            writer.close();
+            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
