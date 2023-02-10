@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.chainlynxscoutingapp.qrcodegen.QrCode;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,16 +31,20 @@ public class QrCodeDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_qr_code_display);
         String data = "";
 
+        Gson gson = new Gson();
+        TeamData teamData = new TeamData();
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getString("data");
             Log.d("Data Debug", data);
+            teamData = gson.fromJson(data, TeamData.class);
             //The key argument here must match that used in the other activity
         }
 
         QrCode.Ecc qrCodeEcc = QrCode.Ecc.LOW;
 
-        QrCode qr = QrCode.encodeText(data, qrCodeEcc);
+        QrCode qr = QrCode.encodeText(gson.toJson(teamData), qrCodeEcc);
 
         Canvas canvas;
         Bitmap bitmap;
@@ -69,7 +74,7 @@ public class QrCodeDisplay extends AppCompatActivity {
         ImageView image = findViewById(R.id.imageView);
         image.setImageBitmap(bitmap);
 
-        generateNoteOnSD(getApplicationContext(), "data.txt", data);
+        generateNoteOnSD(getApplicationContext(), "teamData.txt", gson.toJson(teamData));
     }
 
 

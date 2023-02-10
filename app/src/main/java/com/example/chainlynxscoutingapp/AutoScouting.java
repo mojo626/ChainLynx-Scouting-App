@@ -5,12 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 public class AutoScouting extends AppCompatActivity {
 
@@ -32,18 +40,22 @@ public class AutoScouting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_scouting);
 
+        Gson gson = new Gson();
+        TeamData teamData = new TeamData();
+
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getString("data");
+            teamData = gson.fromJson(data, TeamData.class);
             //The key argument here must match that used in the other activity
         }
         TextView text = (TextView)findViewById(R.id.teamScouting);
-        text.setText("YOU ARE SCOUTING " + data.split("/")[2] + " IN MATCH " + data.split("")[1]);
+        text.setText("YOU ARE SCOUTING " + teamData.teamNumber + " IN MATCH " + teamData.matchNumber);
 
         Button coneScoredButton = findViewById(R.id.autoConePickup);
         coneScoredButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //view.performHapticFeedback(HapticFeedbackConstants.CONFIRM);
                 holdingCone = !holdingCone;
 
                 if (holdingCone)
@@ -157,6 +169,7 @@ public class AutoScouting extends AppCompatActivity {
 
 
         Button autoOverButton = findViewById(R.id.autoOverButton);
+        TeamData finalTeamData = teamData;
         autoOverButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 RadioGroup radioGroup = findViewById(R.id.radioGroup);
@@ -177,9 +190,19 @@ public class AutoScouting extends AppCompatActivity {
 
                 CheckBox mobilityCheck = findViewById(R.id.mobilityCheck);
                 boolean mobility = mobilityCheck.isChecked();
-                String value= autoHighConesScored + "/" + autoMidConesScored + "/" + autoHybridConesScored + "/" + autoHighCubesScored + "/" + autoMidCubesScored + "/" + autoHybridCubesScored + "/" + misses + "/" + mobility + "/" + docked + "/";
+                //String value= autoHighConesScored + "/" + autoMidConesScored + "/" + autoHybridConesScored + "/" + autoHighCubesScored + "/" + autoMidCubesScored + "/" + autoHybridCubesScored + "/" + misses + "/" + mobility + "/" + docked + "/";
+                finalTeamData.autoConesScoredHigh = autoHighConesScored;
+                finalTeamData.autoConesScoredMid = autoMidConesScored;
+                finalTeamData.autoConesScoredHybrid = autoHybridConesScored;
+                finalTeamData.autoCubesScoredHigh = autoHighCubesScored;
+                finalTeamData.autoCubesScoredMid = autoMidCubesScored;
+                finalTeamData.autoCubesScoredHybrid = autoHybridCubesScored;
+                finalTeamData.autoMissed = misses;
+                finalTeamData.autoDocked = docked;
+                finalTeamData.autoMobility = mobility;
+
                 Intent i = new Intent(AutoScouting.this, TeleopScouting.class);
-                i.putExtra("data",data + value);
+                i.putExtra("data",gson.toJson(finalTeamData));
                 startActivity(i);
             }
         });

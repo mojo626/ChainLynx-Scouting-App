@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +25,9 @@ public class MatchSetup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_setup);
 
+        Gson gson = new Gson();
+        TeamData teamData = new TeamData();
+        Log.d("gson test", gson.toJson(teamData));
 
 
 
@@ -30,6 +35,9 @@ public class MatchSetup extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 EditText matchNumber = findViewById(R.id.matchNumberInput);
+
+
+                //Code for the text boxes
 //                EditText teamNumber = findViewById(R.id.teamNumberInput);
 //                RadioGroup blueRedTeam = findViewById(R.id.blueRedGroup);
 //                String team = "";
@@ -59,9 +67,14 @@ public class MatchSetup extends AppCompatActivity {
 
 
 
-                String value = matchNumber.getText().toString() + "/" + teamAlliance + "/" + teamNum.substring(3, teamNum.length()) + "/";
+                //String value = matchNumber.getText().toString() + "/" + teamAlliance + "/" + teamNum.substring(3, teamNum.length()) + "/";
+                teamData.matchNumber = Integer.parseInt(matchNumber.getText().toString());
+                teamData.alliance = teamAlliance;
+                teamData.teamNumber = Integer.parseInt(teamNum.substring(3, teamNum.length()));
+
+
                 Intent i = new Intent(MatchSetup.this, AutoScouting.class);
-                i.putExtra("data", value);
+                i.putExtra("data", gson.toJson(teamData));
                 startActivity(i);
             }
         });

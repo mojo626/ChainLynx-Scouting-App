@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 public class TeleopScouting extends AppCompatActivity {
 
     public int teleopHighConesScored = 0;
@@ -31,13 +33,17 @@ public class TeleopScouting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop_scouting);
 
+        Gson gson = new Gson();
+        TeamData teamData = new TeamData();
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             data = extras.getString("data");
+            teamData = gson.fromJson(data, TeamData.class);
             //The key argument here must match that used in the other activity
         }
         TextView text = (TextView)findViewById(R.id.teamScouting2);
-        text.setText("YOU ARE SCOUTING " + data.split("/")[2] + " IN MATCH " + data.split("")[1]);
+        text.setText("YOU ARE SCOUTING " + teamData.teamNumber + " IN MATCH " + teamData.matchNumber);
 
         Button coneScoredButton = findViewById(R.id.teleopConePickup);
         coneScoredButton.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +162,7 @@ public class TeleopScouting extends AppCompatActivity {
 
 
         Button teleopOverButton = findViewById(R.id.teleopOverButton);
+        TeamData finalTeamData = teamData;
         teleopOverButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 RadioGroup radioGroup = findViewById(R.id.radioGroup);
@@ -173,9 +180,19 @@ public class TeleopScouting extends AppCompatActivity {
                         docked = "Engaged";
                         break;
                 }
-                String value= teleopHighConesScored + "/" + teleopMidConesScored + "/" + teleopHybridConesScored + "/" + teleopHighCubesScored + "/" + teleopMidCubesScored + "/" + teleopHybridCubesScored + "/" + misses + "/" + docked + "/";
+                //String value= teleopHighConesScored + "/" + teleopMidConesScored + "/" + teleopHybridConesScored + "/" + teleopHighCubesScored + "/" + teleopMidCubesScored + "/" + teleopHybridCubesScored + "/" + misses + "/" + docked + "/";
+
+                finalTeamData.teleopConesScoredHigh = teleopHighConesScored;
+                finalTeamData.teleopConesScoredMid = teleopMidConesScored;
+                finalTeamData.teleopConesScoredHybrid = teleopHybridConesScored;
+                finalTeamData.teleopCubesScoredHigh = teleopHighCubesScored;
+                finalTeamData.teleopCubesScoredMid = teleopMidCubesScored;
+                finalTeamData.teleopCubesScoredHybrid = teleopHybridCubesScored;
+                finalTeamData.teleopMissed = misses;
+                finalTeamData.teleopDocked = docked;
+
                 Intent i = new Intent(TeleopScouting.this, QrCodeDisplay.class);
-                i.putExtra("data",data + value);
+                i.putExtra("data", gson.toJson(finalTeamData));
                 startActivity(i);
             }
         });

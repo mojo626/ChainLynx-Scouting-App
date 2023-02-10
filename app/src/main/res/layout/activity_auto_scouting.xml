@@ -57,7 +57,8 @@
         app:layout_constraintEnd_toStartOf="@+id/autoCubePickup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41000003" />
+        app:layout_constraintVertical_bias="0.41000003"
+        android:hapticFeedbackEnabled="true"/>
 
     <Button
         android:id="@+id/autoHighScored"
@@ -207,4 +208,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
