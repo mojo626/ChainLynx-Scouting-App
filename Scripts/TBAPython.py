@@ -4,14 +4,14 @@ from openpyxl import load_workbook
 from openpyxl import Workbook
 import qrcode
 from openpyxl.drawing.image import Image
-from PIL import Image
 import tkinter as tk
 from tkinter import filedialog
 
-deviceSerials = {"3100584a286fb200", "310058722270b200", "2", "3", "4", "5"}
+#Device serial numbers for creating data for each device
+deviceSerials = {"3100584a286fb200", "310058722270b200", "2", "3", "4", "5"} #ADD OTHER DEVICE SERIALS HERE
 tba = tbapy.TBA('MEiPlwvcrXkXUwmp10JVF3gUYfLErgIpYn4XPe885gDr5oyUfN7TCb4fHPNOTr5j')
 
-matches = tba.event_matches('2022wagg') #Need to change this or ask for it
+matches = tba.event_matches(input('What event code?')) #
 
 root = tk.Tk()
 root.withdraw()

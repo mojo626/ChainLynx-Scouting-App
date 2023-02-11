@@ -1,46 +1,34 @@
-import sqlite3
-import csv
-import json
 import pandas as pd
 import numpy as np
+import openpyxl
+from openpyxl import load_workbook
 
-deviceSerials = {'emulator-5554'}
-    
+#Device serial numbers so that we can loop through all of the devices data
+deviceSerials = {"3100584a286fb200", "310058722270b200"} #ADD OTHER DEVICE SERIALS HERE
 
-def txtToJson(filename):
-    
-    # dictionary where the lines from
-    # text will be stored
-    dict1 = {}
-    
-    # creating dictionary
-    with open(filename) as fh:
-    
-        for line in fh:
-    
-            # reads each line and trims of extra the spaces
-            # and gives only the valid words
-            command, description = line.strip().split(None, 1)
-    
-            dict1[command] = description.strip()
-    
-    # creating json file
-    # the JSON file is named as test1
-    out_file = open("test1.json", "w")
-    json.dump(dict1, out_file, indent = 4, sort_keys = False)
-    out_file.close()
-
-
+#Load a workbook, or create one if there isn't one here
+wb = load_workbook(filename = '/Users/ben/Desktop/Coding/Documents/ChainLynxScoutingData/output.xlsx') #CHANGE THIS FILE PATH TO WHERE YOU WANT THE EXCEL SHEET TO BE
+ws = wb.active
 
 for serial in deviceSerials:
-    #data = open('/Users/ben/Documents/ChainLynxScoutingData/teamData.txt', 'r')
-    #jsonObj = json.loads(data.read())
-    #print(type(jsonObj))
-    #do something with the data
-    #df_json = pd.read_json('/Users/ben/Documents/ChainLynxScoutingData/teamData.json', orient='records', lines=True)
-    #df_json.to_excel('DATAFILE.xlsx')
+    #Get JSON data
+    df_json = pd.read_json('/Users/ben/Documents/ChainLynxScoutingData/teamData' + serial + '.txt', orient='records', lines=True) #CHANGE THIS FILE PATH TO WHERE THE SCOUTING DATA IS BEING STORED
 
-    data.close()
+    for (index, row) in df_json.iterrows():
+        #Check if the data is already in the excel sheet
+        inSheet = False
+        for row in ws.iter_rows():
+            if row[11].value == df_json.get('teamNumber').values[0]:
+                if  row[10].value == df_json.get('matchNumber').values[0]:
+                    print("Duplicate data, skipping")
+                    inSheet = True
+        
+        #If the data isn't already in the sheet, add it
+        if inSheet == False:
+            ws.append(df_json.values.tolist()[0])
+
+#Save the workbook
+wb.save('/Users/ben/Desktop/Coding/Documents/ChainLynxScoutingData/output.xlsx') #CHANGE THIS FILE PATH TO WHERE YOU WANT THE EXCEL SHEET TO BE
 
 
 
