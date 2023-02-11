@@ -3,6 +3,7 @@ package com.example.chainlynxscoutingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -52,7 +53,7 @@ public class MatchSetup extends AppCompatActivity {
 
                 String data = "";
                 try {
-                    data = getFileContent("/storage/sdcard0/ChainLynxScouting/tabletDataTeam0.txt"); //TODO Change the file name depending on which tablet it is
+                    data = getFileContent("/storage/sdcard0/ChainLynxScouting/tabletDataTeam" + Build.SERIAL + ".txt"); //TODO Change the file name depending on which tablet it is
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

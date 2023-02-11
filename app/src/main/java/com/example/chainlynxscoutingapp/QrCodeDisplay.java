@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -74,12 +75,13 @@ public class QrCodeDisplay extends AppCompatActivity {
         ImageView image = findViewById(R.id.imageView);
         image.setImageBitmap(bitmap);
 
-        generateNoteOnSD(getApplicationContext(), "teamData.txt", gson.toJson(teamData));
+        generateNoteOnSD(getApplicationContext(), "teamData" + Build.SERIAL + ".txt", gson.toJson(teamData));
     }
 
 
     public void generateNoteOnSD(Context context, String sFileName, String sBody) {
         try {
+            Log.d("File Name", sFileName);
             File root = new File(Environment.getExternalStorageDirectory(), "Notes");
             if (!root.exists()) {
                 root.mkdirs();
