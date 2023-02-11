@@ -6,6 +6,8 @@ This app is meant to run on android SM-T280 tablets, and with an API level of 22
 
 There are also scripts for getting and processing data from the devices on a centralized computer
 
+**Make sure that before using, you go through and change the local file paths to match where you want the data to be stored and pulled from your computer**
+
 
 # To Use:
 
@@ -14,3 +16,11 @@ There are also scripts for getting and processing data from the devices on a cen
 2. Scout on the devices
 
 3. When you want the data, plug the devices that you want the data from in, and run getScoutingData.sh in the terminal (right now, it just gets the text files, but in the future it will also add the data into an excel sheet or a database)
+
+# To-do
+
+1. Find a way to automate file paths for saving an getting data so that the python and shell script can be used on any device with no modifications
+
+2. Save data to a database instead of an excel file, and make some sort of user interface for querying data
+
+3. Incorparate data processing like an OPR calculator
