@@ -18,18 +18,14 @@ for serial in deviceSerials:
         #Check if the data is already in the excel sheet
         inSheet = False
         for row in ws.iter_rows():
-            if row[11].value == df_json.get('teamNumber').values[0]:
-                if  row[10].value == df_json.get('matchNumber').values[0]:
-                    print("Duplicate data, skipping")
+            if row[11].value == df_json.get('teamNumber').values[index]:
+                if  row[10].value == df_json.get('matchNumber').values[index]:
+                    print("Duplicate data, skipping (match number: " + str(df_json.get('matchNumber').values[index]) + ", team number: " + str(df_json.get('teamNumber').values[index]) + ")")
                     inSheet = True
         
         #If the data isn't already in the sheet, add it
         if inSheet == False:
-            ws.append(df_json.values.tolist()[0])
+            ws.append(df_json.values.tolist()[index])
 
 #Save the workbook
 wb.save('/Users/ben/Desktop/Coding/Documents/ChainLynxScoutingData/output.xlsx') #CHANGE THIS FILE PATH TO WHERE YOU WANT THE EXCEL SHEET TO BE
-
-
-
-
