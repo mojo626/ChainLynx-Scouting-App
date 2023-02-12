@@ -8,19 +8,22 @@ import tkinter as tk
 from tkinter import filedialog
 
 #Device serial numbers for creating data for each device
-deviceSerials = {"3100584a286fb200", "310058722270b200", "2", "3", "4", "5"} #ADD OTHER DEVICE SERIALS HERE
+deviceSerials = ["3100584a286fb200", "310058722270b200", "2", "3", "4", "5"] #ADD OTHER DEVICE SERIALS HERE
 tba = tbapy.TBA('MEiPlwvcrXkXUwmp10JVF3gUYfLErgIpYn4XPe885gDr5oyUfN7TCb4fHPNOTr5j')
 
-matches = tba.event_matches(input('What event code?')) #
+#Ask for event code
+matches = tba.event_matches(input('What event code?')) 
 
 root = tk.Tk()
 root.withdraw()
 
+#Ask for where the text files should be stored
 file_path = filedialog.askdirectory();
 
+#Loop through all teams in match
 for input in range(0, 5):
     data = ""
-    f = open(file_path + "/TabletMatchData/tabletDataTeam" + deviceSerials[input] + ".txt", "w+")
+    f = open(file_path + "/tabletDataTeam" + deviceSerials[input] + ".txt", 'w+')
 
     for matchNum in range(0, len(matches)):
         match = matches[matchNum]

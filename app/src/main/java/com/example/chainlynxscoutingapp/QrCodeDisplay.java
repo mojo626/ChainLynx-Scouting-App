@@ -88,7 +88,7 @@ public class QrCodeDisplay extends AppCompatActivity {
             }
             File gpxfile = new File(root, sFileName);
             FileWriter writer = new FileWriter(gpxfile, true);
-            writer.append(sBody);
+            writer.append("\n" + sBody); //TODO This might break things on tablets
             writer.flush();
             writer.close();
             Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();

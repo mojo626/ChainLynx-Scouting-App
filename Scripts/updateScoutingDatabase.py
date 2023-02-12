@@ -12,7 +12,7 @@ ws = wb.active
 
 for serial in deviceSerials:
     #Get JSON data
-    df_json = pd.read_json('/Users/ben/Documents/ChainLynxScoutingData/teamData' + serial + '.txt', orient='records', lines=True) #CHANGE THIS FILE PATH TO WHERE THE SCOUTING DATA IS BEING STORED
+    df_json = pd.read_json('/Users/ben/Documents/ChainLynxScoutingData/teamData' + serial + '.txt', orient='records', lines=True, encoding='utf-8-sig') #CHANGE THIS FILE PATH TO WHERE THE SCOUTING DATA IS BEING STORED
 
     for (index, row) in df_json.iterrows():
         #Check if the data is already in the excel sheet
