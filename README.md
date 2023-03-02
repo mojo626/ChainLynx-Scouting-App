@@ -11,11 +11,11 @@ There are also scripts for getting and processing data from the devices on a cen
 
 # To Use:
 
-1. Run TBAPython.py to generate match data using the blue alliance API (hopefully in the future this will also transfer the data to the devices, but currently you have to do that manually with adb)
+1. Run TBAPython.py to generate match data using the blue alliance API (hopefully in the future this will also transfer the data to the devices, but currently you have to do that manually with adb push)
 
 2. Scout on the devices
 
-3. When you want the data, plug the devices that you want the data from in, and run getScoutingData.sh in the terminal (right now, it just gets the text files, but in the future it will also add the data into an excel sheet or a database)
+3. When you want the data, plug the devices that you want the data from in, and run getScoutingData.sh in the terminal (right now, it adds the data to an excel sheet, but in the future it will also hopefully add the data to a database)
 
 # To-do
 
