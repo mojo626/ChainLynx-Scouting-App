@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
@@ -52,6 +56,27 @@ public class AutoScouting extends AppCompatActivity {
         }
         TextView text = (TextView)findViewById(R.id.teamScouting);
         text.setText("YOU ARE SCOUTING " + teamData.teamNumber + " IN MATCH " + teamData.matchNumber);
+
+
+        //Code to wait for 15 sec and then flash when auto is over
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                ColorDrawable draw = (ColorDrawable) findViewById(R.id.root_layout).getBackground();
+                if (draw.getColor() == Color.rgb(200, 100, 100))
+                {
+                    findViewById(R.id.root_layout).setBackgroundColor(Color.parseColor("#aaaaaa"));
+                } else {
+                    findViewById(R.id.root_layout).setBackgroundColor(Color.rgb(200, 100, 100));
+                }
+
+                handler.postDelayed(this, 100);
+            }
+        }, 15000);
+
+
 
         Button coneScoredButton = findViewById(R.id.autoConePickup);
         coneScoredButton.setOnClickListener(new View.OnClickListener() {

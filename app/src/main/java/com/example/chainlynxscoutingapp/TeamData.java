@@ -22,6 +22,8 @@ public class TeamData {
     public int teleopMissed;
     public String teleopDocked;
 
+    public String notes;
+
 
     TeamData(){}
 }

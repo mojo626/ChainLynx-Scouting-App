@@ -5,8 +5,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +22,9 @@
         android:theme="@style/Theme.ChainLynxScoutingApp"
         tools:replace="android:icon,android:theme"
         tools:targetApi="31">
+        <activity
+            android:name=".Notes"
+            android:exported="false" />
         <activity
             android:name=".pitScoutActivity"
             android:exported="false" />

@@ -8,7 +8,7 @@ import tkinter as tk
 from tkinter import filedialog
 
 #Device serial numbers for creating data for each device
-deviceSerials = ["3100584a286fb200", "310058722270b200", "2", "3", "4", "5"] #ADD OTHER DEVICE SERIALS HERE
+deviceSerials = ["3100584a286fb200", "310058722270b200", "G0K0H40455030SQV", "emulator-5554", "4", "5"] #TODO ADD OTHER DEVICE SERIALS HERE
 tba = tbapy.TBA('MEiPlwvcrXkXUwmp10JVF3gUYfLErgIpYn4XPe885gDr5oyUfN7TCb4fHPNOTr5j')
 
 #Ask for event code

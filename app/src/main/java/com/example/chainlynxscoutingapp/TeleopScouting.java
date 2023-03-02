@@ -191,7 +191,7 @@ public class TeleopScouting extends AppCompatActivity {
                 finalTeamData.teleopMissed = misses;
                 finalTeamData.teleopDocked = docked;
 
-                Intent i = new Intent(TeleopScouting.this, QrCodeDisplay.class);
+                Intent i = new Intent(TeleopScouting.this, Notes.class);
                 i.putExtra("data", gson.toJson(finalTeamData));
                 startActivity(i);
             }
