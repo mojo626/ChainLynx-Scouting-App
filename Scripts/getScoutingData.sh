@@ -6,7 +6,7 @@ mkdir -p /Users/ben/Documents/ChainLynxScoutingData #Change this for file path y
 #Loop through all devices and pull data from each
 for DEVICE in $(adb devices | grep -v "List" | awk '{print $1}')
 do
-  adb -s $DEVICE pull sdcard/Notes/teamData$DEVICE.txt /Users/ben/Documents/ChainLynxScoutingData
+  adb -s $DEVICE pull /storage/sdcard0/Notes/teamData$DEVICE.txt /Users/ben/Documents/ChainLynxScoutingData
 done
 
 

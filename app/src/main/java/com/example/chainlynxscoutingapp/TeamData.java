@@ -11,8 +11,8 @@ public class TeamData {
     public int autoCubesScoredMid;
     public int autoCubesScoredHybrid;
     public int autoMissed;
-    public boolean autoMobility;
-    public String autoDocked;
+    public int autoMobility;
+    public int autoDocked;
     public int teleopConesScoredHigh;
     public int teleopConesScoredMid;
     public int teleopConesScoredHybrid;
@@ -20,9 +20,9 @@ public class TeamData {
     public int teleopCubesScoredMid;
     public int teleopCubesScoredHybrid;
     public int teleopMissed;
-    public String teleopDocked;
-
+    public int endgame;
     public String notes;
+
 
 
     TeamData(){}

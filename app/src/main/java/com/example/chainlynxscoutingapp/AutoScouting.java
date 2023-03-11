@@ -8,17 +8,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.HapticFeedbackConstants;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -56,25 +49,30 @@ public class AutoScouting extends AppCompatActivity {
         }
         TextView text = (TextView)findViewById(R.id.teamScouting);
         text.setText("YOU ARE SCOUTING " + teamData.teamNumber + " IN MATCH " + teamData.matchNumber);
+        if (teamData.alliance == "red") {
+            text.setTextColor(Color.rgb(255, 0, 0));
+        } else {
+            text.setTextColor(Color.rgb(0, 0, 255));
+        }
 
 
-        //Code to wait for 15 sec and then flash when auto is over
-        final Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                ColorDrawable draw = (ColorDrawable) findViewById(R.id.root_layout).getBackground();
-                if (draw.getColor() == Color.rgb(200, 100, 100))
-                {
-                    findViewById(R.id.root_layout).setBackgroundColor(Color.parseColor("#aaaaaa"));
-                } else {
-                    findViewById(R.id.root_layout).setBackgroundColor(Color.rgb(200, 100, 100));
-                }
-
-                handler.postDelayed(this, 100);
-            }
-        }, 15000);
+//        //Code to wait for 15 sec and then flash when auto is over
+//        final Handler handler = new Handler(Looper.getMainLooper());
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                ColorDrawable draw = (ColorDrawable) findViewById(R.id.root_layout).getBackground();
+//                if (draw.getColor() == Color.rgb(0, 0, 0))
+//                {
+//                    findViewById(R.id.root_layout).setBackgroundColor(Color.parseColor("#aaaaaa"));
+//                } else {
+//                    findViewById(R.id.root_layout).setBackgroundColor(Color.rgb(0, 0, 0));
+//                }
+//
+//                handler.postDelayed(this, 100);
+//            }
+//        }, 15000);
 
 
 
@@ -199,17 +197,17 @@ public class AutoScouting extends AppCompatActivity {
             public void onClick(View view) {
                 RadioGroup radioGroup = findViewById(R.id.radioGroup);
                 int radioId = radioGroup.getCheckedRadioButtonId();
-                String docked = "";
+                int docked = 0;
                 switch (radioId)
                 {
                     case R.id.neitherRadioButton:
-                        docked = "Not Docked";
+                        docked = 0;
                         break;
                     case R.id.unengagedRadioButton:
-                        docked = "Unengaged";
+                        docked = 8;
                         break;
                     case R.id.engagedRadioButton:
-                        docked = "Engaged";
+                        docked = 12;
                         break;
                 }
 
@@ -224,7 +222,7 @@ public class AutoScouting extends AppCompatActivity {
                 finalTeamData.autoCubesScoredHybrid = autoHybridCubesScored;
                 finalTeamData.autoMissed = misses;
                 finalTeamData.autoDocked = docked;
-                finalTeamData.autoMobility = mobility;
+                finalTeamData.autoMobility = mobility ? 3 : 0;
 
                 Intent i = new Intent(AutoScouting.this, TeleopScouting.class);
                 i.putExtra("data",gson.toJson(finalTeamData));

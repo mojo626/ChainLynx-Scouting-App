@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -167,17 +168,20 @@ public class TeleopScouting extends AppCompatActivity {
             public void onClick(View view) {
                 RadioGroup radioGroup = findViewById(R.id.radioGroup);
                 int radioId = radioGroup.getCheckedRadioButtonId();
-                String docked = "";
+                int docked = 0;
                 switch (radioId)
                 {
                     case R.id.neitherRadioButton:
-                        docked = "Not Docked";
+                        docked = 0;
                         break;
                     case R.id.unengagedRadioButton:
-                        docked = "Unengaged";
+                        docked = 6;
                         break;
                     case R.id.engagedRadioButton:
-                        docked = "Engaged";
+                        docked = 10;
+                        break;
+                    case R.id.parkedRadioButton:
+                        docked = 3;
                         break;
                 }
                 //String value= teleopHighConesScored + "/" + teleopMidConesScored + "/" + teleopHybridConesScored + "/" + teleopHighCubesScored + "/" + teleopMidCubesScored + "/" + teleopHybridCubesScored + "/" + misses + "/" + docked + "/";
@@ -189,7 +193,7 @@ public class TeleopScouting extends AppCompatActivity {
                 finalTeamData.teleopCubesScoredMid = teleopMidCubesScored;
                 finalTeamData.teleopCubesScoredHybrid = teleopHybridCubesScored;
                 finalTeamData.teleopMissed = misses;
-                finalTeamData.teleopDocked = docked;
+                finalTeamData.endgame = docked;
 
                 Intent i = new Intent(TeleopScouting.this, Notes.class);
                 i.putExtra("data", gson.toJson(finalTeamData));

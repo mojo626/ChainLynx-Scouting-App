@@ -46,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button pitScoutButton = findViewById(R.id.pitScoutButton);
-        pitScoutButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(view.getContext(), pitScoutActivity.class);
-                startActivity(switchActivityIntent);
-            }
-        });
+//        Button pitScoutButton = findViewById(R.id.pitScoutButton);
+//        pitScoutButton.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View view) {
+//                Intent switchActivityIntent = new Intent(view.getContext(), pitScoutActivity.class);
+//                startActivity(switchActivityIntent);
+//            }
+//        });
     }
 
 

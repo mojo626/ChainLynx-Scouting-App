@@ -28,6 +28,12 @@
             android:text="Neither" />
 
         <RadioButton
+            android:id="@+id/parkedRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parked" />
+
+        <RadioButton
             android:id="@+id/unengagedRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
