@@ -78,7 +78,7 @@ public class MatchSetup extends AppCompatActivity {
                 teamData.teamNumber = Integer.parseInt(teamNum.substring(3, teamNum.length()));
 
 
-                Intent i = new Intent(MatchSetup.this, AutoScouting.class);
+                Intent i = new Intent(MatchSetup.this, PreMatch.class);
                 i.putExtra("data", gson.toJson(teamData));
                 startActivity(i);
             }
